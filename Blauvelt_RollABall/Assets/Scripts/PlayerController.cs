@@ -57,6 +57,10 @@ public class PlayerController : MonoBehaviour
             count = count + 1;
 
             SetCountText();
+
+            // Code is used to grow my player character each time it picksup a cube. 
+            float growthAmount = .4f;
+            transform.localScale += new Vector3(growthAmount, growthAmount, growthAmount);
         }
     }
 }
