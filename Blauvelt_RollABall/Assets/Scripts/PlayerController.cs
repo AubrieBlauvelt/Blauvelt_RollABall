@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -58,9 +59,18 @@ public class PlayerController : MonoBehaviour
 
             SetCountText();
 
-            // Code is used to grow my player character each time it picksup a cube. 
+            // Code is used to grow my player character each time it picks up a cube. 
             float growthAmount = .4f;
             transform.localScale += new Vector3(growthAmount, growthAmount, growthAmount);
+        }
+    }
+
+        //To enact a reset on falling off the map
+    private void Update()
+    {
+        if (transform.position.y < -10f)  //sets the fall distance before reset
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
