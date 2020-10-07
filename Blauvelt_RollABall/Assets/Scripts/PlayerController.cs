@@ -36,8 +36,9 @@ public class PlayerController : MonoBehaviour
 
     void SetCountText()
     {
+        //reduced amount required to win from 12 to 6 to make it easier for the player
         countText.text = "Count: " + count.ToString();
-        if (count >= 12)
+        if (count >= 6)
         {
             winTextObject.SetActive(true);
         }
@@ -83,6 +84,13 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (transform.position.y < -10f)  //sets the fall distance before reset
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+
+        //resets game after getting -3 points
+        if (count <= -3)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
